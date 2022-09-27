@@ -11,14 +11,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -39,7 +43,7 @@ public class HelloApplication extends Application {
         grid.add(scenetitle, 0, 0, 2, 1);
 
         Label userName = new Label("Nombrae: ");
-        grid.add(userName, 0,1);
+        grid.add(userName, 0, 1);
 
         TextField userTextField = new TextField();
         grid.add(userTextField, 1, 1);
@@ -52,10 +56,14 @@ public class HelloApplication extends Application {
 
         Button btnAceptar = new Button("Aceptar");
 
+        Label info = new Label();
+        grid.add(info, 0, 4);
+
         btnAceptar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Datos aceptados");
+                info.setText("Datos aceptados");
             }
         });
 
@@ -67,6 +75,7 @@ public class HelloApplication extends Application {
                 System.out.println("Datos cancelados y borrados");
                 userTextField.setText("");
                 userTextFieldAge.setText("");
+                info.setText("Datos borrados");
             }
         });
 
@@ -74,7 +83,6 @@ public class HelloApplication extends Application {
         grid.add(btnCancelar, 1, 3);
         grid.setHalignment(btnAceptar, HPos.LEFT);
         grid.setHalignment(btnCancelar, HPos.RIGHT);
-
 
 
         primaryStage.setTitle("Nombre y Edad");
@@ -109,7 +117,7 @@ public class HelloApplication extends Application {
         //--------------------------------------------------------------//
         //--------------------------------------------------------------//
 
-        primaryStage.setTitle("Creando un Boton Simple #2");
+        /*primaryStage.setTitle("Creando un Boton Simple #2");
 
         Button b = new Button("button");
         b.setLayoutX(100);
@@ -137,9 +145,80 @@ public class HelloApplication extends Application {
         primaryStage.setScene(sc);
 
         primaryStage.show();
-    }
+    }*/
 
+        //--------------------------------------------------------------//
+        //--------------------------------------------------------------//
+        //--------------------------------------------------------------//
+
+
+        /*primaryStage.setTitle("Creando un boton con imagen");
+
+        FileInputStream input = new FileInputStream("D:\\2DAM\\Desarrollo de interfaces\\Tema1\\coche.jpg");
+
+        Image i = new Image(input);
+
+        ImageView iw = new ImageView(i);
+
+        Button b = new Button("", iw);
+
+        TilePane r = new TilePane();
+
+        Label l = new Label("Boton no seleccionado");
+
+        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e)
+            {
+                l.setText("Boton seleccionado");
+            }
+        };
+
+        b.setOnAction(event);*/
+
+        //--------------------------------------------------------------//
+        //--------------------------------------------------------------//
+        //--------------------------------------------------------------//
+
+        /*StackPane root = new StackPane();
+        primaryStage.setTitle("Boton cancelar");
+
+        Button cancelButton = new Button("Cancelar");
+        cancelButton.setCancelButton(true);
+        cancelButton.setOnAction(actionEvent -> {
+            System.out.println("Boton cancelar pulsado");
+        });
+
+        root.getChildren().add(cancelButton);
+
+        Scene sc = new Scene(root, 250, 250);
+
+        primaryStage.setScene(sc);
+
+        primaryStage.show();*/
+
+        //--------------------------------------------------------------//
+        //--------------------------------------------------------------//
+        //--------------------------------------------------------------//
+
+        /*StackPane root = new StackPane();
+        primaryStage.setTitle("Boton Default/Aceptar");
+
+        Button defaultButton = new Button("Cancelar");
+        defaultButton.setDefaultButton(true);
+        defaultButton.setOnAction(actionEvent -> {
+            System.out.println("Boton Default/Aceptar pulsado");
+        });
+
+        root.getChildren().add(defaultButton);
+
+        Scene sc = new Scene(root, 250, 250);
+
+        primaryStage.setScene(sc);
+
+        primaryStage.show();*/
+
+    }
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
